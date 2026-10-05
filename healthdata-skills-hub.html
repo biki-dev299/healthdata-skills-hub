@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="HealthData Skills Hub curates free and low-cost learning resources for healthcare analytics.">
+<title>HealthData Skills Hub</title>
+<style>
+:root{--bg:#f5faf9;--surface:#fff;--text:#15333a;--muted:#60777d;--line:#dce9e7;--primary:#087f78;--primary2:#1168a8;--soft:#e5f4f1;--shadow:0 10px 30px rgba(20,60,70,.08);--radius:18px}
+[data-theme="dark"]{--bg:#0e191c;--surface:#142326;--text:#edf8f7;--muted:#a9bdbf;--line:#294044;--primary:#55c8bd;--primary2:#69aee0;--soft:#173c3a;--shadow:0 12px 32px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary2));display:grid;place-items:center;color:#fff;font-weight:900}.navlinks{display:none;gap:18px}.navlinks a{text-decoration:none;color:var(--muted);font-size:14px}.iconbtn,.btn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:10px 13px}.btn{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:750;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:46px}.btn.secondary{background:var(--surface);color:var(--text)}.btn.small{min-height:40px;padding:8px 11px;font-size:14px}
+.hero{padding:58px 0 34px;background:radial-gradient(circle at 85% 15%,rgba(8,127,120,.14),transparent 34%),radial-gradient(circle at 10% 20%,rgba(17,104,168,.10),transparent 28%)}.eyebrow{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--soft);color:var(--primary);font-weight:800;font-size:13px}.hero h1{font-size:clamp(36px,7vw,68px);line-height:1.02;letter-spacing:-.045em;max-width:800px;margin:16px 0}.hero p{font-size:18px;color:var(--muted);max-width:700px;margin:0 0 22px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px}.toggle{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--muted);font-size:14px}.toggle input{width:18px;height:18px;accent-color:var(--primary)}
+section{padding:54px 0}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:22px}.sectionhead h2{font-size:clamp(25px,4vw,36px);margin:0;letter-spacing:-.025em}.sectionhead p{margin:5px 0 0;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr;gap:14px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}.path{position:relative;overflow:hidden}.path:after{content:"";position:absolute;right:-35px;top:-35px;width:100px;height:100px;border-radius:50%;background:var(--soft)}.path .num{font-size:13px;color:var(--primary);font-weight:900}.path h3{margin:7px 0}.muted{color:var(--muted)}.path p,.resource p{font-size:14px;color:var(--muted);margin:0}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}.controls input,.controls select{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:12px;min-height:46px}.controls .wide{grid-column:1/-1}.count{font-size:14px;color:var(--muted);margin:8px 0 14px}.resource-grid{display:grid;grid-template-columns:1fr;gap:14px}.resource{display:flex;flex-direction:column;gap:13px}.r-top{display:flex;justify-content:space-between;gap:10px}.r-top h3{margin:0;font-size:19px}.save{border:0;background:transparent;color:var(--muted);font-size:21px;padding:0}.save.active{color:var(--primary)}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:12px;padding:5px 8px;border-radius:999px;background:var(--soft);color:var(--primary);font-weight:700}.r-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}.r-meta div{padding:9px;background:var(--bg);border-radius:10px}.r-meta b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}.r-actions{display:flex;gap:8px;align-items:center;margin-top:auto}.verified{font-size:11px;color:var(--muted);margin-left:auto}
+.datasets{display:grid;grid-template-columns:1fr;gap:12px}.dataset{display:flex;gap:14px;align-items:flex-start}.dataset .dot{flex:0 0 40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;color:var(--primary);font-weight:900}.dataset h3{margin:0 0 4px;font-size:17px}.dataset p{margin:0;color:var(--muted);font-size:14px}
+.roadmap{display:grid;grid-template-columns:1fr;gap:14px}.road{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:var(--surface)}.road h3{margin:0 0 10px}.road label{display:block;padding:8px 0;color:var(--muted);font-size:14px}.road input{accent-color:var(--primary);margin-right:8px}
+.roles{display:grid;grid-template-columns:1fr;gap:12px}.role h3{margin:0 0 5px}.role p{margin:0;color:var(--muted);font-size:14px}.tools{display:flex;flex-wrap:wrap;gap:9px}.tool{padding:11px 13px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:var(--surface)}
+.quiz{background:linear-gradient(135deg,var(--soft),var(--surface));border:1px solid var(--line);border-radius:24px;padding:24px}.quizgrid{display:grid;grid-template-columns:1fr;gap:12px}.quiz select{width:100%;padding:12px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px}.result{display:none;margin-top:15px;padding:15px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:35px 0 50px;color:var(--muted);font-size:13px}.footergrid{display:grid;grid-template-columns:1fr;gap:22px}.form{display:flex;gap:8px}.form input{min-width:0;flex:1;padding:11px;border:1px solid var(--line);border-radius:11px;background:var(--surface);color:var(--text)}
+@media(min-width:700px){.navlinks{display:flex}.grid{grid-template-columns:repeat(2,1fr)}.resource-grid{grid-template-columns:repeat(2,1fr)}.datasets{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(3,1fr)}.roles{grid-template-columns:repeat(2,1fr)}.quizgrid{grid-template-columns:repeat(3,1fr)}.footergrid{grid-template-columns:1.5fr 1fr}.controls{grid-template-columns:2fr repeat(4,1fr)}.controls .wide{grid-column:auto}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.resource-grid{grid-template-columns:repeat(3,1fr)}.roles{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#"><span class="logo">HD</span><span>HealthData Skills Hub</span></a>
+<nav class="navlinks"><a href="#paths">Paths</a><a href="#resources">Resources</a><a href="#datasets">Datasets</a><a href="#roadmap">Roadmap</a><a href="#careers">Careers</a></nav>
+<button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+<span class="eyebrow">Free & low-cost learning directory</span>
+<h1>Learn healthcare analytics without a huge course budget.</h1>
+<p>Find practical learning paths, public health datasets, tools and communities—curated in one place and linked to the original providers.</p>
+<div class="hero-actions"><a class="btn" href="#resources">Start learning</a><a class="btn secondary" href="#quiz">Build my path</a></div>
+<label class="toggle"><input type="checkbox" id="freeOnly"> Show free resources only</label>
+</div></section>
+
+<section id="paths"><div class="wrap"><div class="sectionhead"><div><h2>Learning paths</h2><p>Pick a direction, then mix resources around your budget.</p></div></div><div class="grid" id="pathGrid"></div></div></section>
+
+<section id="resources"><div class="wrap">
+<div class="sectionhead"><div><h2>Resource directory</h2><p>External links only. Prices and availability can change.</p></div></div>
+<div class="controls">
+<input class="wide" id="search" placeholder="Search platforms, skills or topics…" aria-label="Search resources">
+<select id="price"><option value="">All prices</option><option>Free</option><option>Freemium</option><option>Under $20 a month</option><option>Paid</option></select>
+<select id="level"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+<select id="skill"><option value="">All skills</option></select>
+<select id="cert"><option value="">Certificate: any</option><option value="Yes">Certificate: yes</option><option value="No">Certificate: no</option></select>
+</div>
+<div class="count" id="count"></div><div class="resource-grid" id="resourceGrid"></div>
+</div></section>
+
+<section id="quiz"><div class="wrap"><div class="quiz">
+<div class="sectionhead"><div><h2>Build my path</h2><p>Three answers give you a starting recommendation. You can change it anytime.</p></div></div>
+<div class="quizgrid">
+<select id="qLevel"><option value="">1. Current level</option><option value="beginner">Beginner</option><option value="some">Some data experience</option><option value="health">Healthcare experience</option></select>
+<select id="qGoal"><option value="">2. Main goal</option><option value="analyst">Become a healthcare data analyst</option><option value="clinical">Clinical informatics</option><option value="bi">Build dashboards / BI</option><option value="research">Research / public health</option></select>
+<select id="qBudget"><option value="">3. Budget</option><option value="free">Free only</option><option value="low">Low cost</option><option value="any">Flexible</option></select>
+</div><button class="btn" style="margin-top:12px" id="quizBtn">Recommend a path</button><div class="result" id="quizResult"></div>
+</div></div></section>
+
+<section id="datasets"><div class="wrap"><div class="sectionhead"><div><h2>Free datasets & practice</h2><p>Use real or public data to turn learning into portfolio evidence.</p></div></div><div class="datasets">
+<div class="card dataset"><span class="dot">K</span><div><h3><a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Datasets ↗</a></h3><p>Practice cleaning, exploration, visualization and beginner machine learning across many public datasets.</p></div></div>
+<div class="card dataset"><span class="dot">CMS</span><div><h3><a href="https://data.cms.gov/" target="_blank" rel="noopener">CMS Open Data ↗</a></h3><p>Practice claims, utilization, quality and healthcare cost analysis with U.S. public datasets.</p></div></div>
+<div class="card dataset"><span class="dot">P</span><div><h3><a href="https://physionet.org/" target="_blank" rel="noopener">PhysioNet / MIMIC ↗</a></h3><p>Practice clinical data workflows and reproducible research; access requirements vary by dataset.</p></div></div>
+<div class="card dataset"><span class="dot">W</span><div><h3><a href="https://data.who.int/" target="_blank" rel="noopener">WHO Data ↗</a></h3><p>Practice population-health indicators, trends, comparisons and basic public-health visualization.</p></div></div>
+</div></div></section>
+
+<section id="roadmap"><div class="wrap"><div class="sectionhead"><div><h2>30 / 60 / 90-day roadmap</h2><p>A lightweight plan for building skills consistently.</p></div></div><div class="roadmap" id="roadmapGrid"></div></div></section>
+
+<section id="careers"><div class="wrap"><div class="sectionhead"><div><h2>Career directions</h2><p>Use these skill bundles to shape your learning and portfolio.</p></div></div><div class="roles">
+<div class="card role"><h3>Healthcare Data Analyst</h3><p>SQL, Excel/Python, statistics, dashboards, healthcare KPIs, data quality and communication.</p></div>
+<div class="card role"><h3>Clinical Informatics</h3><p>Healthcare workflows, EHR concepts, FHIR/HL7, terminology, SQL and clinical data governance.</p></div>
+<div class="card role"><h3>RCM Analyst</h3><p>Claims, billing workflows, SQL, spreadsheets, revenue-cycle KPIs and dashboarding.</p></div>
+<div class="card role"><h3>Population Health Analyst</h3><p>Public health data, statistics, SQL/Python/R, stratification, visualization and reporting.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="sectionhead"><div><h2>Free tools & communities</h2><p>Practice without buying a full software stack.</p></div></div><div class="tools">
+<a class="tool" href="https://powerbi.microsoft.com/desktop/" target="_blank" rel="noopener">Power BI Desktop ↗</a>
+<a class="tool" href="https://public.tableau.com/" target="_blank" rel="noopener">Tableau Public ↗</a>
+<a class="tool" href="https://jupyter.org/" target="_blank" rel="noopener">Jupyter ↗</a>
+<a class="tool" href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener">RStudio ↗</a>
+<a class="tool" href="https://community.ohdsi.org/" target="_blank" rel="noopener">OHDSI Community ↗</a>
+<a class="tool" href="https://chat.fhir.org/" target="_blank" rel="noopener">FHIR Community ↗</a>
+</div></div></section>
+</main>
+
+<footer><div class="wrap footergrid">
+<div><strong>HealthData Skills Hub</strong><p>Independent learning directory. We do not host or sell courses. Always verify price, access, certificate terms and eligibility on the destination platform.</p><p>Affiliate disclosure: some outbound links may become affiliate links in the future. If so, they will be labeled here.</p></div>
+<div><strong>Suggest a resource</strong><p>Have a reputable healthcare-data learning resource we should review?</p><form class="form" id="suggestForm"><input required type="url" id="suggestUrl" placeholder="https://example.com" aria-label="Resource URL"><button class="btn small" type="submit">Suggest</button></form><p id="suggestMsg"></p></div>
+</div></footer>
+
+<script>
+/* EDIT THIS ARRAY TO ADD/REMOVE RESOURCES. */
+const resources=[
+{name:"Coursera",url:"https://www.coursera.org/",teach:"Healthcare analytics, SQL, Python, statistics and data visualization.",price:"Freemium",level:"Beginner",cert:"Yes",skills:["Analytics","SQL","Python"],verified:"2026-10-05"},
+{name:"edX",url:"https://www.edx.org/learn/healthcare",teach:"Healthcare, analytics and data skills from universities and organizations.",price:"Freemium",level:"Beginner",cert:"Yes",skills:["Analytics","Healthcare"],verified:"2026-10-05"},
+{name:"Kaggle Learn",url:"https://www.kaggle.com/learn/",teach:"Short practical lessons in Python, SQL, visualization and machine learning.",price:"Free",level:"Beginner",cert:"No",skills:["Python","SQL","AI/ML"],verified:"2026-10-05"},
+{name:"freeCodeCamp",url:"https://www.freecodecamp.org/",teach:"Free programming and data-analysis practice with Python, SQL and statistics.",price:"Free",level:"Beginner",cert:"Yes",skills:["Python","SQL"],verified:"2026-10-05"},
+{name:"Khan Academy",url:"https://www.khanacademy.org/",teach:"Free foundations in statistics, probability and quantitative reasoning.",price:"Free",level:"Beginner",cert:"No",skills:["Statistics"],verified:"2026-10-05"},
+{name:"DataCamp",url:"https://www.datacamp.com/",teach:"Interactive SQL, Python, R, statistics and data visualization practice.",price:"Freemium",level:"Beginner",cert:"Yes",skills:["SQL","Python","R"],verified:"2026-10-05"},
+{name:"Google Career Certificates",url:"https://grow.google/certificates/data-analytics/",teach:"Structured data analytics training covering spreadsheets, SQL, R and visualization.",price:"Paid",level:"Beginner",cert:"Yes",skills:["Analytics","SQL","R"],verified:"2026-10-05"},
+{name:"IBM SkillsBuild",url:"https://skillsbuild.org/",teach:"Free learning resources across data, AI and workplace technology.",price:"Free",level:"Beginner",cert:"Yes",skills:["Analytics","AI/ML"],verified:"2026-10-05"},
+{name:"Microsoft Learn",url:"https://learn.microsoft.com/en-us/training/powerplatform/power-bi",teach:"Power BI learning paths for connecting, cleaning, modeling and visualizing data.",price:"Free",level:"Beginner",cert:"Yes",skills:["Dashboards","Analytics"],verified:"2026-10-05"},
+{name:"Tableau",url:"https://www.tableau.com/learn/training",teach:"Official Tableau learning and training resources for analytics and visualization.",price:"Free",level:"Beginner",cert:"Yes",skills:["Dashboards"],verified:"2026-10-05"},
+{name:"HealthIT.gov",url:"https://www.healthit.gov/",teach:"U.S. health IT resources covering interoperability, standards and digital health.",price:"Free",level:"Beginner",cert:"No",skills:["FHIR/HL7","Healthcare"],verified:"2026-10-05"},
+{name:"HL7 FHIR",url:"https://www.hl7.org/fhir/",teach:"Official FHIR specification and implementation resources for health-data interoperability.",price:"Free",level:"Intermediate",cert:"No",skills:["FHIR/HL7"],verified:"2026-10-05"},
+{name:"OHDSI",url:"https://www.ohdsi.org/resources/",teach:"Open resources for observational research, common data models and health analytics.",price:"Free",level:"Intermediate",cert:"No",skills:["RWE","Research"],verified:"2026-10-05"},
+{name:"Mode SQL Tutorial",url:"https://mode.com/sql-tutorial/",teach:"Interactive SQL lessons for querying and analyzing relational data.",price:"Free",level:"Beginner",cert:"No",skills:["SQL"],verified:"2026-10-05"},
+{name:"SQLBolt",url:"https://sqlbolt.com/",teach:"Interactive SQL lessons with exercises from queries through table operations.",price:"Free",level:"Beginner",cert:"No",skills:["SQL"],verified:"2026-10-05"},
+{name:"WHO Data",url:"https://data.who.int/",teach:"Global health indicators and datasets for population-health analysis.",price:"Free",level:"Beginner",cert:"No",skills:["Public Health","Research"],verified:"2026-10-05"},
+{name:"PhysioNet",url:"https://physionet.org/",teach:"Research datasets and tools for biomedical signal and clinical data work.",price:"Free",level:"Intermediate",cert:"No",skills:["Research","Healthcare"],verified:"2026-10-05"},
+{name:"CMS Open Data",url:"https://data.cms.gov/",teach:"Public U.S. Medicare and Medicaid datasets for healthcare analysis.",price:"Free",level:"Intermediate",cert:"No",skills:["Public Health","Analytics"],verified:"2026-10-05"},
+{name:"CDC Data",url:"https://data.cdc.gov/",teach:"Public health datasets for surveillance, trends and population-health practice.",price:"Free",level:"Beginner",cert:"No",skills:["Public Health"],verified:"2026-10-05"},
+{name:"NLM",url:"https://www.nlm.nih.gov/",teach:"Biomedical information resources and tools for health data and research.",price:"Free",level:"Intermediate",cert:"No",skills:["Research","Healthcare"],verified:"2026-10-05"},
+{name:"OpenWHO",url:"https://openwho.org/",teach:"Open health learning resources from the World Health Organization.",price:"Free",level:"Beginner",cert:"No",skills:["Public Health","Healthcare"],verified:"2026-10-05"},
+{name:"Jupyter",url:"https://jupyter.org/",teach:"Open-source notebooks for reproducible Python, R and data-analysis workflows.",price:"Free",level:"Beginner",cert:"No",skills:["Python","R"],verified:"2026-10-05"},
+{name:"Posit / RStudio",url:"https://posit.co/download/rstudio-desktop/",teach:"Free RStudio Desktop environment for R-based analysis and reporting.",price:"Free",level:"Beginner",cert:"No",skills:["R","Analytics"],verified:"2026-10-05"},
+{name:"W3Schools",url:"https://www.w3schools.com/sql/",teach:"Beginner-friendly SQL and Python references with interactive examples.",price:"Free",level:"Beginner",cert:"Yes",skills:["SQL","Python"],verified:"2026-10-05"},
+{name:"AWS Skill Builder",url:"https://skillbuilder.aws/",teach:"Cloud, data and machine-learning learning resources from AWS.",price:"Freemium",level:"Intermediate",cert:"Yes",skills:["AI/ML","Analytics"],verified:"2026-10-05"},
+{name:"IBM Data Analyst",url:"https://www.coursera.org/professional-certificates/ibm-data-analyst",teach:"Data analyst curriculum covering Python, SQL, Excel and visualization.",price:"Paid",level:"Beginner",cert:"Yes",skills:["Analytics","SQL","Python"],verified:"2026-10-05"}
+];
+
+const paths=[
+["01","Healthcare Analytics Foundations","Understand EHRs, claims, quality measures, statistics, privacy and the analytics workflow."],
+["02","SQL for Health Data","Query healthcare tables, join datasets, calculate KPIs and validate results."],
+["03","Python / R for Health Data","Clean, analyze and visualize healthcare datasets with reproducible code."],
+["04","Dashboards: Power BI / Tableau","Turn healthcare metrics into clear, interactive dashboards for stakeholders."],
+["05","Health Data Standards","Learn FHIR, HL7, ICD and the concepts behind interoperable health data."],
+["06","AI / ML in Healthcare","Build foundations in modeling, evaluation, responsible AI and healthcare use cases."],
+["07","RWE & Public Health Data","Work with observational data, public datasets, study design and evidence generation."]
+];
+
+const roadmaps=[
+["First 30 days",["Learn healthcare data basics","Complete SQL fundamentals","Choose one public dataset","Make one simple chart"]],
+["Days 31–60",["Clean and join a real dataset","Build a dashboard or notebook","Learn one healthcare standard","Write a short data-quality note"]],
+["Days 61–90",["Complete one portfolio project","Document methods and assumptions","Publish a dashboard/notebook","Prepare a 2-minute project explanation"]]
+];
+
+const $=s=>document.querySelector(s);
+$("#pathGrid").innerHTML=paths.map(p=>`<article class="card path"><span class="num">${p[0]}</span><h3>${p[1]}</h3><p>${p[2]}</p></article>`).join("");
+$("#roadmapGrid").innerHTML=roadmaps.map((r,i)=>`<article class="road"><h3>${r[0]}</h3>${r[1].map((x,j)=>`<label><input type="checkbox" data-road="${i}-${j}"> ${x}</label>`).join("")}</article>`).join("");
+
+const skills=[...new Set(resources.flatMap(r=>r.skills))].sort();
+$("#skill").innerHTML='<option value="">All skills</option>'+skills.map(s=>`<option>${s}</option>`).join("");
+
+let saved=JSON.parse(localStorage.getItem("hdsh-saved")||"[]");
+function render(){
+ const q=$("#search").value.toLowerCase().trim(), price=$("#price").value, level=$("#level").value, skill=$("#skill").value, cert=$("#cert").value, free=$("#freeOnly").checked;
+ const list=resources.filter(r=>(!q||[r.name,r.teach,...r.skills].join(" ").toLowerCase().includes(q))&&(!price||r.price===price)&&(!level||r.level===level)&&(!skill||r.skills.includes(skill))&&(!cert||r.cert===cert)&&(!free||r.price==="Free"));
+ $("#count").textContent=`Showing ${list.length} of ${resources.length} resources`;
+ $("#resourceGrid").innerHTML=list.map((r,i)=>`<article class="card resource"><div class="r-top"><h3>${r.name}</h3><button class="save ${saved.includes(r.name)?"active":""}" aria-label="Save ${r.name}" onclick="toggleSave('${r.name.replaceAll("'","\\\\'")}')">★</button></div><p>${r.teach}</p><div class="tags">${r.skills.map(s=>`<span class="tag">${s}</span>`).join("")}</div><div class="r-meta"><div><b>Price</b>${r.price}</div><div><b>Level</b>${r.level}</div><div><b>Certificate</b>${r.cert}</div><div><b>Verified</b>${r.verified}</div></div><div class="r-actions"><a class="btn small" href="${r.url}" target="_blank" rel="noopener noreferrer">Visit platform ↗</a><span class="verified">External site</span></div></article>`).join("")||`<div class="card"><strong>No matches.</strong><p class="muted">Try clearing a filter or searching a broader term.</p></div>`;
+}
+function toggleSave(name){saved=saved.includes(name)?saved.filter(x=>x!==name):[...saved,name];localStorage.setItem("hdsh-saved",JSON.stringify(saved));render();}
+["search","price","level","skill","cert","freeOnly"].forEach(id=>$("#"+id).addEventListener("input",render));
+
+$("#themeBtn").onclick=()=>{const dark=document.documentElement.dataset.theme==="dark";document.documentElement.dataset.theme=dark?"":"dark";localStorage.setItem("hdsh-theme",dark?"light":"dark");$("#themeBtn").textContent=dark?"☾":"☀";}
+if(localStorage.getItem("hdsh-theme")==="dark"){$("#themeBtn").click()}
+document.querySelectorAll("[data-road]").forEach(cb=>{const k=cb.dataset.road;cb.checked=localStorage.getItem("road-"+k)==="1";cb.onchange=()=>localStorage.setItem("road-"+k,cb.checked?"1":"0")});
+
+$("#quizBtn").onclick=()=>{
+ const l=$("#qLevel").value,g=$("#qGoal").value,b=$("#qBudget").value;
+ if(!l||!g||!b){$("#quizResult").style.display="block";$("#quizResult").textContent="Answer all three questions to get a recommendation.";return}
+ let path=g==="clinical"?"Health Data Standards":g==="bi"?"Dashboards (Power BI/Tableau)":g==="research"?"Real-World Evidence and Public Health Data":"Healthcare Analytics Foundations + SQL for Health Data";
+ if(l==="beginner"&&g==="analyst")path="Healthcare Analytics Foundations → SQL for Health Data";
+ if(b==="free")path+=" — start with the free resources first.";
+ $("#quizResult").style.display="block";$("#quizResult").innerHTML=`<strong>Your starting path:</strong> ${path}<br><span class="muted">Tip: use one structured course plus one public dataset rather than collecting too many resources.</span>`;
+};
+$("#suggestForm").onsubmit=e=>{e.preventDefault();$("#suggestMsg").textContent="Thanks! This demo form does not send data anywhere yet; connect it to your preferred form endpoint before publishing.";};
+render();
+</script>
+</body>
+</html>
